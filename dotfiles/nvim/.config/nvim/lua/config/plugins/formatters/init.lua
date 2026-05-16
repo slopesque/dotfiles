@@ -9,7 +9,7 @@ return {
                 local disable_filetypes = { txt = true }
                 return disable_filetypes[vim.bo[bufnr].filetype] and nil
                     or {
-                        timeout_ms = 500,
+                        timeout_ms = 3000, -- Nix formatter can be slow
                         lsp_format = "fallback",
                     }
             end,
