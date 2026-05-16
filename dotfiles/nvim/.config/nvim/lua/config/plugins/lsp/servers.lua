@@ -9,10 +9,11 @@
 --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 local servers = {
     -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
-    ["bash-language-server"] = {},
+    bashls = {},
     ["clang-format"] = {},
     clangd = {},
-    ["docker-language-server"] = {},
+    docker_language_server = {},
+    jsonls = {},
     lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
@@ -28,11 +29,11 @@ local servers = {
         },
     },
     markdownlint = {},
+    neocmake = {},
     nil_ls = {},
     pyright = {},
     ruff = {},
     rust_analyzer = {},
-    rustfmt = {},
     stylua = {},
 }
 
