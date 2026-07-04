@@ -31,10 +31,11 @@ local servers = {
     markdownlint = {},
     neocmake = {},
     nil_ls = {},
-    pyright = {},
+    -- pyright = {},
     ruff = {},
     rust_analyzer = {},
     stylua = {},
+    ty = {},
 }
 
 return {
