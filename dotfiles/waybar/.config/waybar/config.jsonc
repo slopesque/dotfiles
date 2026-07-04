@@ -101,7 +101,7 @@
             "menu-file": "$HOME/.config/waybar/components/power_menu.xml",
             "menu-actions": {
                 "lock": "hyprlock",
-                "exit": "hyprctl dispatch exit",
+                "exit": "hyprctl dispatch hyprshutdown",
                 "shutdown": "sudo poweroff",
                 "reboot": "sudo reboot"
             }
