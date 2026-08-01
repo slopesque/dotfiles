@@ -56,6 +56,17 @@ local function desugar_plugin(plugin)
         plugin = { src = plugin }
     end
 
+    if not plugin.src then
+        assert(
+            #plugin > 0,
+            "could not find any reference to use as src for element: "
+            .. vim.inspect(plugin)
+        )
+
+        plugin.src = table.remove(plugin, 1)
+        vim.print(plugin)
+    end
+
     plugin.name = plugin.name or string.match(plugin.src, "^.*/(.*)$")
 
     plugin.dependencies = plugin.dependencies or {}
