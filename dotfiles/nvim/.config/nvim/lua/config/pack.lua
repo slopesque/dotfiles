@@ -64,7 +64,6 @@ local function desugar_plugin(plugin)
         )
 
         plugin.src = table.remove(plugin, 1)
-        vim.print(plugin)
     end
 
     plugin.name = plugin.name or string.match(plugin.src, "^.*/(.*)$")
@@ -74,8 +73,8 @@ local function desugar_plugin(plugin)
     plugin.options = plugin.options or {}
     plugin.priority = plugin.priority or 0
 
-    plugin.config = plugin.config or function()
-        require(plugin.entrypoint).setup(plugin.options)
+    plugin.config = plugin.config or function(self)
+        require(self.entrypoint).setup(self.options)
     end
 
     return plugin
@@ -202,7 +201,7 @@ function workflow.deploy(plugins)
 
         tables.foreach(
             batch,
-            function(plugin) plugin.config() end
+            function(plugin) plugin:config() end
         )
     end
 
