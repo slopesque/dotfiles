@@ -77,6 +77,9 @@ local function desugar_plugin(plugin)
         require(self.entrypoint).setup(self.options)
     end
 
+    plugin.post_config = plugin.post_config or function(self)
+    end
+
     return plugin
 end
 
@@ -201,7 +204,10 @@ function workflow.deploy(plugins)
 
         tables.foreach(
             batch,
-            function(plugin) plugin:config() end
+            function(plugin)
+                plugin:config()
+                plugin:post_config()
+            end
         )
     end
 
