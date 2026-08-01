@@ -56,14 +56,16 @@ local function desugar_plugin(plugin)
         plugin = { src = plugin }
     end
 
-    local name = plugin.name or string.match(plugin.src, "^.*/(.*)$")
-    local options = plugin.options or {}
+    plugin.name = plugin.name or string.match(plugin.src, "^.*/(.*)$")
 
-    plugin.config = plugin.config or function() require(name).setup(options) end
     plugin.dependencies = plugin.dependencies or {}
-    plugin.name = name
-    plugin.options = options
+    plugin.entrypoint = plugin.entrypoint or plugin.name
+    plugin.options = plugin.options or {}
     plugin.priority = plugin.priority or 0
+
+    plugin.config = plugin.config or function()
+        require(plugin.entrypoint).setup(plugin.options)
+    end
 
     return plugin
 end
