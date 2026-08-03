@@ -19,6 +19,10 @@
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "tree-sitter-manager.nvim": {
+      "rev": "9dc4ffc4fb010e7abb976a92360c2c5a7d324c15",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     }
   }
 }
