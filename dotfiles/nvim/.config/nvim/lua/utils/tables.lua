@@ -23,6 +23,21 @@ function tables.accumulate(array, callback)
     return all_results
 end
 
+-- Return true if no element in the list evaluate to false.
+-- @generic T
+-- @param array T[] A list of elements
+-- @return true if all the elements in the list evaluate to true. false
+--              if at least one of them do not
+function tables.all(array)
+    for i = 1, #array do
+        if not array[i] then
+            return false
+        end
+    end
+
+    return true
+end
+
 -- Return all the distinct values from the array.
 -- @generic T
 -- @param array T[] A list of elements

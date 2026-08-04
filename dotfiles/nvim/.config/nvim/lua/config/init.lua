@@ -1,5 +1,6 @@
 require("config.options")
 require("config.keymap")
+require("config.commands")
 require("config.autocommands")
 require("config.pack")
 require("config.lsp")

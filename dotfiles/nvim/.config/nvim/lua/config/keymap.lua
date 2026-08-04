@@ -47,3 +47,49 @@ vim.keymap.set(
     "<cmd>nohlsearch<CR>",
     { desc = "Clear all search highlights" }
 )
+
+--
+-- Git
+--
+
+vim.keymap.set(
+    "n",
+    "<leader>ga",
+    "<cmd>GitAdd<CR>",
+    { desc = "Stage the current file to Git" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>gc",
+    "<cmd>GitCommit false<CR>",
+    { desc = "Commit changes" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>gC",
+    "<cmd>GitCommit true<CR>",
+    { desc = "Amend commit with staged changes" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>gl",
+    "<cmd>GitLog<CR>",
+    { desc = "Display Git history" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>gR",
+    "<cmd>GitRestore<CR>",
+    { desc = "Reset the current file to last Git state" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>gu",
+    "<cmd>GitUnstage<CR>",
+    { desc = "Unstage the current file from Git" }
+)
