@@ -48,6 +48,13 @@ vim.keymap.set(
     { desc = "Clear all search highlights" }
 )
 
+vim.keymap.set(
+    "n",
+    "<leader>t",
+    "<cmd>StartTerminal<CR>",
+    { desc = "Open a new terminal window" }
+)
+
 --
 -- Git
 --
