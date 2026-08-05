@@ -89,6 +89,18 @@ vim.keymap.set(
 
 vim.keymap.set(
     "n",
+    "<leader>gr",
+    function()
+        vim.notify(
+            "Did you mean to request a file reset ? Use <leader>gR !",
+            vim.log.levels.WARN
+        )
+    end,
+    { desc = "Nothing (raise a warning for reset)" }
+)
+
+vim.keymap.set(
+    "n",
     "<leader>gR",
     "<cmd>GitRestore<CR>",
     { desc = "Reset the current file to last Git state" }
