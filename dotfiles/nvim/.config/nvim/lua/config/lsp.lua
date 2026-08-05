@@ -65,6 +65,12 @@ vim.api.nvim_create_autocmd(
                                 client.offset_encoding
                             )
 
+                            local options = {
+                                anchor_bias = "above",
+                                focusable = false,
+                                silent = true
+                            }
+
                             client:request(
                                 "textDocument/signatureHelp",
                                 params,
@@ -76,28 +82,13 @@ vim.api.nvim_create_autocmd(
                                     local signatures = result.signatures
 
                                     if signatures and #signatures > 0 then
-                                        vim.lsp.buf.signature_help(
-                                            { focusable = false }
-                                        )
+                                        vim.lsp.buf.signature_help(options)
                                         return
                                     end
 
-                                    vim.lsp.buf.hover({ focusable = false })
+                                    vim.lsp.buf.hover(options)
                                 end
                             )
-                        end
-                    }
-                )
-            end
-
-            if client:supports_method("textDocument/signatureHelp") then
-                vim.api.nvim_create_autocmd(
-                    { "InsertEnter", "CursorMovedI" },
-                    {
-                        desc = "Display Signature In Insert Mode",
-                        buffer = args.buf,
-                        callback = function()
-                            vim.lsp.buf.signature_help()
                         end
                     }
                 )
