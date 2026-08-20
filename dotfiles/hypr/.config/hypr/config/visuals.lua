@@ -1,3 +1,16 @@
+local function preprocess_animation(animation)
+    local result = animation
+
+    result.enabled = result.enabled or true
+
+    if not result.bezier and not result.spring then
+        result.bezier = "default"
+    end
+
+    return result
+end
+
+
 local config = {
     general = {
         border_size = 2,
@@ -47,4 +60,41 @@ local config = {
     },
 }
 
+local animations = {
+    {
+        leaf = "workspaces",
+        speed = 15,
+    },
+    {
+        leaf = "windows",
+        speed = 7,
+    },
+    {
+        leaf = "windowsIn",
+        speed = 8,
+    },
+    {
+        leaf = "windowsOut",
+        speed = 8,
+        style = "popin 75%",
+    },
+    {
+        leaf = "fade",
+        speed = 10,
+    },
+}
+
 hl.config(config)
+
+hl.curve(
+    "default",
+    {
+        type = "bezier",
+        points = { { 0.05, 0.9 }, { 0.1, 1.05 } },
+    }
+)
+
+for i = 1, #animations do
+    animation = preprocess_animation(animations[i])
+    hl.animation(animation)
+end
