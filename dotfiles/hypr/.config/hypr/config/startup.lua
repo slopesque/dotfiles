@@ -33,7 +33,9 @@ local commands = {
 
 local function startup()
     for i = 1, #commands do
-        hl.exec_cmd(commands[i])
+        if commands[i] ~= nil then
+            hl.exec_cmd(commands[i])
+        end
     end
 end
 
