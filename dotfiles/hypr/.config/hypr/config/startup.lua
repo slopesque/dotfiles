@@ -8,17 +8,27 @@ local function delay(seconds, command)
     return "sleep " .. seconds .. " " .. command
 end
 
+local function if_true(condition, command)
+    if not condition then
+        return nil
+    end
+
+    return command
+end
+
 local commands = {
     "dunst",
     "hyprctl setcursor " .. env.vars.cursor_theme .. " " .. env.vars.cursor_size,
     "hypridle",
     "hyprpaper",
     "waybar",
+    if_true(env.vars.FCITX_ON, "fcitx5 -d --replace"),
+    if_true(env.vars.HYPRPM_ON, "hyprpm reload"),
     delay(
         1,
         THEME_SWITCH_HANDLER .. " " .. THEME_SWITCH_INTERVAL
     ),
-    delay(2, "pw-play " .. STARTUP_SOUND_FILE)
+    delay(2, "pw-play " .. STARTUP_SOUND_FILE),
 }
 
 local function startup()
