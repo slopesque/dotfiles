@@ -28,6 +28,7 @@ env.vars = {
     theme = "Adwaita-dark",
     cursor_size = "24",
     cursor_theme = "miku-cursor-linux",
+    LAPTOP_MODE = false,
 }
 
 require("config.override_env")(env)
