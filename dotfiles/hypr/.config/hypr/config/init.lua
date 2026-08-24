@@ -1,0 +1,8 @@
+require("config.environment")
+require("config.startup")
+require("config.inputs")
+require("config.bindings")
+require("config.visuals")
+require("config.windowrules")
+require("config.optimizations")
+require("config.overrides")
