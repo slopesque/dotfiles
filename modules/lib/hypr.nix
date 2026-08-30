@@ -22,14 +22,16 @@ in {
             default = ''
             '';
             example = ''
-              start-once = fcitx5 &
+              hl.exec_cmd("fcitx5")
             '';
             description = ''
               Extra Hyprland instruction to run during Hyprland
               session.
 
-              Those instructions will be run after all default
-              instructions, leading to possible overrides.
+              Those instructions will be run after the full
+              initialization of the Hyprland configuration,
+              use it to add or replace config values or run
+              custom processes.
             '';
           };
 
@@ -38,17 +40,20 @@ in {
             default = ''
             '';
             example = ''
-              $terminal = alacritty
-
-              env = XCURSOR_SIZE,12
+              return function(env)
+                env.tools.terminal = "alacritty"
+                env.vars.cursor_size = 12
+              end
             '';
             description = ''
               Extra Hyprland instructions to run during Hyprland
               session.
 
-              Those instructions will be after configuration of
-              default variables and before running all the other
-              instructions of the environment setup.
+              This should define a Lua module which can be
+              utilized as a function taking as a parameter a
+              reference to the global environment table. It will
+              be called after its initial initialisation so that
+              you may replace or insert whatever you want in it.
 
               Use this to add/override environment variables and
               change your default terminal, GTK theme...
@@ -69,8 +74,8 @@ in {
           ''
             #!/bin/sh
 
-            hyprland_overrides_path="${config.xdg.configHome}/hypr/hyprland/overrides.conf"
-            hyprland_overrides_env_path="${config.xdg.configHome}/hypr/hyprland/overrides-env.conf"
+            hyprland_overrides_path="${config.xdg.configHome}/hypr/config/overrides.lua"
+            hyprland_overrides_env_path="${config.xdg.configHome}/hypr/config/override_env.lua"
 
             hyprland_overrides_content="${cfg.overrides.hyprland.extras}"
             hyprland_overrides_env_content="${cfg.overrides.hyprland.extras-env}"
