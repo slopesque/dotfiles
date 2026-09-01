@@ -16,7 +16,8 @@ hl.bind(
     with_leader("SHIFT + B"),
     hl.dsp.dpms({ action = "on" }),
     {
-        description = "Manual screen turn-on"
+        description = "Manual screen turn-on",
+        locked = true,
     }
 )
 
@@ -24,7 +25,8 @@ hl.bind(
     with_leader("SHIFT + N"),
     hl.dsp.dpms({ action = "off" }),
     {
-        description = "Manual screen turn-off"
+        description = "Manual screen turn-off",
+        locked = true,
     }
 )
 
