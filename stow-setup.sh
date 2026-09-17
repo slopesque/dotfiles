@@ -5,6 +5,7 @@ set -e
 cd ./dotfiles
 stow --target ~ \
     bashrc \
+    dunst \
     fastfetch \
     git \
     hypr \

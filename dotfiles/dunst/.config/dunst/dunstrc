@@ -1,0 +1,51 @@
+# Based-on: Catpuccin Frappé
+
+[global]
+    timeout = 5s
+    idle_threshold = 1min
+
+    font = Roboto 11
+    width = (0,375)
+    height = (0,250)
+    corner_radius = 10
+    icon_corner_radius = 5
+    frame_width = 2
+    frame_color = "#8839ef"  # catpuccin mauve
+    transparency = 15
+
+    gap_size = 5
+
+    origin = top-right
+    layer = overlay
+    offset = (10, 40)
+    follow = mouse
+    sort = urgency_descending
+
+    indicate_hidden = true
+    show_age_threshold = 1min
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = true
+
+    dmenu = rofi -dmenu -p "Choose Action..."
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = context
+    mouse_right_click = close_current
+
+[experimental]
+    pause_on_mouse_over = true
+ 
+[notification]
+    background = "#303446"  # dark gray
+    foreground = "#b5bfe2"  # white
+
+[urgency_low]
+    frame_color = "#8caaee"  # blue
+    background  = "#414559"  # gray
+
+[urgency_normal]
+    frame_color = "#ca9ee6"  # mauve
+
+[urgency_critical]
+    frame_color = "#e78284"  # red
+    timeout = 20s

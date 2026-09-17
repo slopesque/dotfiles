@@ -82,7 +82,25 @@ local animations = {
         leaf = "fade",
         speed = 10,
     },
+    {
+        leaf = "layers",
+        speed = 9,
+    },
+    {
+        leaf = "layersOut",
+        speed = 12,
+    },
 }
+
+hl.layer_rule(
+    {
+        name = "notifications_slide",
+        match = {
+            namespace = "notifications",
+        },
+        animation = "slide right",
+    }
+)
 
 hl.config(config)
 

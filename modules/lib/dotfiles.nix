@@ -8,6 +8,7 @@
 in {
   imports = [
     ./bashrc.nix
+    ./dunst.nix
     ./fastfetch.nix
     ./git.nix
     ./hypr.nix
