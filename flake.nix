@@ -22,6 +22,18 @@
     in {
       formatter = pkgs.alejandra;
 
+      devShells = {
+        default = pkgs.mkShell {
+          pname = "Dotfiles development shell";
+          packages = with pkgs; [
+            alejandra
+            bash-language-server
+            nixd
+            emmylua-ls
+          ];
+        };
+      };
+
       homeModules = rec {
         default = dotfiles;
         dotfiles = import ./modules/lib;
