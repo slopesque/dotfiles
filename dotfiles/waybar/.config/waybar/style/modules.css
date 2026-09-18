@@ -167,6 +167,10 @@
     background-color: @green;
 }
 
+#custom-notifications {
+    background-color: @yellow;
+}
+
 #custom-power {
     background-color: @crust;
     color: @text;

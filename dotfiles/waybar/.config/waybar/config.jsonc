@@ -180,7 +180,9 @@
             "hyprland/workspaces"
         ],
         "modules-middle": [],
-        "modules-right": [],
+        "modules-right": [
+            "custom/notifications"
+        ],
         "hyprland/workspaces": {
             "format": "{name}",
             "format-icons": {
@@ -194,6 +196,14 @@
                 "default": ""
             },
             "disable-scroll": true
-        }
+        },
+        "custom/notifications": {
+            "format": "{text} {icon}",
+            "tooltip-format": "{alt}",
+            "return-type": "json",
+            "exec": "dunstctl count history | xargs printf '{ \"text\": \" %1$d\", \"alt\": \"%1$d hidden notification(s)\" }'",
+            "on-click": "dunstctl history-pop",
+            "restart-interval": 2
+        },
     }
 ]
