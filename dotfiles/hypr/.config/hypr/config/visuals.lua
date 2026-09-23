@@ -13,12 +13,12 @@ end
 
 local config = {
     general = {
-        border_size = 2,
+        border_size = 3,
         gaps_in = 5,
         gaps_out = 20,
 
         ["col.active_border"] = {
-            colors = { "rgba(33ccffee)",  "rgba(00ff99ee)" },
+            colors = { "rgb(9283ac)",  "rgb(42774f)" },
             angle = 45,
         },
         ["col.inactive_border"] = "rgba(595959aa)",
