@@ -203,6 +203,7 @@
             "return-type": "json",
             "exec": "dunstctl count history | xargs printf '{ \"text\": \" %1$d\", \"alt\": \"%1$d hidden notification(s)\" }'",
             "on-click": "dunstctl history-pop",
+            "on-click-right": "dunstctl close-all ; dunstctl history-clear",
             "restart-interval": 2
         },
     }
