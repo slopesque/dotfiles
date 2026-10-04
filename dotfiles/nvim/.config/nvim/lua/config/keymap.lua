@@ -112,3 +112,63 @@ vim.keymap.set(
     "<cmd>GitUnstage<CR>",
     { desc = "Unstage the current file from Git" }
 )
+
+--
+-- Spelling Assistance
+--
+
+local function toggle_spell(enable, language)
+    vim.opt_local.spell = enable
+    vim.opt_local.spelllang = language or ""
+end
+
+vim.keymap.set(
+    "n",
+    "<leader>see",
+    function()
+        toggle_spell(true, "en_us")
+    end,
+    { desc = "Enable spelling checker for English" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>sef",
+    function()
+        toggle_spell(true, "fr_fr,en_us")
+    end,
+    { desc = "Enable spelling checker for French" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>se/",
+    function()
+        local language = vim.ui.input()
+        toggle_spell(true, language)
+    end,
+    { desc = "Enable spelling checker for a custom language" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>sd",
+    function()
+        toggle_spell(false)
+    end,
+    { desc = "Disable spelling checker" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>sc",
+    "=z",
+    { desc = "Correct word spelling" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>sa",
+    "zG",
+    { desc = "Add word as a good spell in memory" }
+)
