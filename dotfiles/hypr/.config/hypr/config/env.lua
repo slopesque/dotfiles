@@ -15,6 +15,7 @@ end
 
 env.tools = {
     browser = "brave",
+    agent = "kitty pi",
     emoji = "ibus emoji",
     exit = "hyprshutdown",
     file_manager = "pcmanfm",

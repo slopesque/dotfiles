@@ -37,6 +37,7 @@ hl.bind(
 -- |                    |
 -- *--------------------/
 
+hl.bind(with_leader("SHIFT + P"), env.tools.agent)
 hl.bind(with_leader("F"), env.tools.browser)
 hl.bind(with_leader("semicolon"), env.tools.emoji)
 hl.bind(with_leader("E"), env.tools.file_manager)
