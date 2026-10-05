@@ -5,17 +5,17 @@
  * ---------------- */
 
 #battery {
-    background-color: @lavender;
+    /* background-color: @lavender; */
 }
 
 #battery.charging,
 #battery.plugged {
-    background-color: @green;
+    /* background-color: @green; */
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: @red;
+    /* background-color: @red; */
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -25,90 +25,79 @@
 }
 
 #backlight {
-    background-color: @rosewater;
+    /* background-color: @rosewater */;
 }
 
 #bluetooth {
-    background-color: @mauve;
+    /* background-color: @mauve; */
 }
 
 #bluetooth.disabled,
 #bluetooth.off {
-    background-color: @surface1;
+    /* background-color: @surface1; */
 }
 
 #bluetooth.on {
-    background-color: @maroon;
+    /* background-color: @maroon; */
 }
 
 #bluetooth.discovering,
 #bluetooth.discoverable,
 #bluetooth.pairable {
-    background-color: @sapphire;
-    color: @base;
+    /* background-color: @sapphire; */
+    /* color: @base; */
 }
 
 #bluetooth.connected {
-    background-color: @teal;
+    /* background-color: @teal; */
 }
 
 #clock {
-    background-color: @overlay2;
+    /* background-color: @overlay2; */
 }
 
 #cpu {
-    background-color: @pink;
+    /* background-color: @pink; */
 }
 
 #disk {
-    background-color: @mauve;
+    /* background-color: @mauve; */
 }
 
 #language {
-    background: @sapphire;
-    color: @base;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 20px;
+    /* background: @sapphire; */
 }
 
 #memory {
-    background-color: @blue;
+    /* background-color: @blue; */
 }
 
 #network {
-    background-color: @sky;
+    /* background-color: @sky; */
 }
 
 #network.disconnected {
-    background-color: @maroon;
+    /* background-color: @maroon; */
 }
 
 #pulseaudio {
-    background-color: @yellow;
+    /* background-color: @yellow; */
 }
 
 #pulseaudio:hover {
-    background-color: #a37800;
+    /* background-color: #a37800; */
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    /* background-color: #90b1b1; */
 }
 
 #temperature {
-    background-color: @peach;
+    /* background-color: @peach; */
 }
 
 #temperature.critical {
-    background-color: @red;
-}
-
-
-#window,
-#workspaces {
-    margin: 0 4px;
+    /* background-color: @red; */
 }
 
 #window {
@@ -116,9 +105,7 @@
 }
 
 #workspaces button {
-    padding: 0 4px;
-    margin-right: 5px;
-    background-color: @rosewater;
+    /* background-color: @rosewater; */
     opacity: 0.65;
 }
 
@@ -127,92 +114,83 @@
 }
 
 #workspaces button.active {
-    background-color: @lavender;
+    /* background-color: @lavender; */
     opacity: 0.9;
 }
 
 #workspaces button.urgent {
-    background-color: @red;
-}
-
-.modules-left>widget:first-child>#workspaces {
-    margin-left: 5px;
-}
-
-.modules-right>widget:last-child>#workspaces {
-    margin-right: 0;
+    /* background-color: @red; */
 }
 
 #custom-locker, #custom-focus-mode {
-    background-color: @crust;
+    /* background-color: @crust; */
 }
 
 #custom-locker.purple, #custom-focus-mode.unknown {
-    background-color: @mauve;
+    /* background-color: @mauve; */
 }
 
 #custom-focus-mode.inactive {
-    background-color: @lavender;
+    /* background-color: @lavender; */
 }
 
 #custom-focus-mode.active {
-    background-color: @yellow;
+    /* background-color: @yellow; */
 }
 
 #custom-locker.red {
-    background-color: @red;
+    /* background-color: @red; */
 }
 
 #custom-locker.green {
-    background-color: @green;
+    /* background-color: @green; */
 }
 
 #custom-notifications {
-    background-color: @yellow;
+    /* background-color: @yellow; */
 }
 
 #custom-power {
-    background-color: @crust;
-    color: @text;
+    /* background-color: @crust; */
 }
 
 #custom-power:hover {
-    color: #ffffff;
+    /* color: #ffffff; */
 }
 
 #custom-updates {
-    background-color: @lavender;
+    /* background-color: @lavender; */
 }
 
 #custom-updates.purple {
-    background-color: @mauve;
+    /* background-color: @mauve; */
 }
 
 #custom-updates.red {
-    background-color: @red;
+    /* background-color: @red; */
 }
 
 #custom-updates.yellow {
-    background-color: @yellow;
+    /* background-color: @yellow; */
 }
 
 #custom-updates.green {
-    background-color: @green;
+    /* background-color: @green; */
 }
 
 #custom-virtual-keyboard {
-    background-color: @lavender;
+    /* background-color: @lavender; */
 }
 
 #custom-virtual-keyboard.undefined {
-    background-color: @maroon;
+    /* background-color: @maroon; */
 }
 
 #custom-virtual-keyboard.inactive {
-    background-color: @lavender;
+    /* background-color: @lavender; */
 }
 
 #custom-virtual-keyboard.active {
-    background-color: @green;
-    border: white;
+    /* background-color: @green; */
+    /* border: white; */
 }

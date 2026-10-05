@@ -6,12 +6,14 @@
         "height": 30,
         "modules-left": [
             "clock",
-            "pulseaudio",
             "network",
             "bluetooth",
+            "pulseaudio",
             "hyprland/language"
         ],
-        "modules-center": ["hyprland/workspaces"],
+        "modules-center": [
+            "hyprland/window"
+        ],
         "modules-right": [
             "custom/updates",
             "cpu",
@@ -19,21 +21,11 @@
             "temperature",
             "backlight",
             "battery",
-            "custom/locker"
+            "custom/virtual-keyboard",
+            "custom/locker",
+            "custom/focus-mode",
+            "custom/power"
         ],
-        "mpris": {
-            "player": "spotify",
-            "interval": 1,
-            "format": "{player_icon} {dynamic}",
-            "format-paused": "{status_icon} <i>{dynamic}</i>",
-            "player-icons": {
-                "default": "▶",
-                "mpv": "🎵"
-            },
-            "status-icons": {
-                "paused": "⏸"
-            },
-        },
         "backlight": {
             "format": "{percent}% {icon}",
             "format-icons": [
@@ -69,18 +61,13 @@
             "bat": "BAT2"
         },
         "bluetooth": {
-            "format": "",
-            "format-connected": "󰂱",
-            "format-connected-battery": "󰂱 {device_battery_percentage}%",
-            "format-on": "",
-            "format-off": "󰂲",
-            "format-disabled": "",
-            "format-no-controller": "",
+            "format": " {status}",
+            "format-connected": " {device_alias}",
+            "format-connected-battery": " {device_alias} {device_battery_percentage}%",
             "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
             "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
             "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-            "on-click": "kitty bluetoothctl",
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
         },
         "clock": {
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -106,15 +93,6 @@
             "exec": "~/.config/waybar/scripts/check-locker-state.sh",
             "restart-interval": 1,
             "on-click": "~/.config/waybar/scripts/switch-locker-state.sh"
-        },
-        "custom/notifications": {
-            "format": "{text} {icon}",
-            "tooltip-format": "{alt}",
-            "return-type": "json",
-            "exec": "dunstctl count history | xargs printf '{ \"text\": \" %1$d\", \"alt\": \"%1$d hidden notification(s)\" }'",
-            "on-click": "dunstctl history-pop",
-            "on-click-right": "dunstctl close-all ; dunstctl history-clear",
-            "restart-interval": 2
         },
         "custom/power": {
             "format": " ⏻ ",
@@ -153,17 +131,13 @@
             "on-click": "kitty btop"
         },
         "network": {
-            "format": "{icon}",
-            "format-icons": {
-                "wifi": "󰖩",
-                "ethernet": "󰈀",
-                "linked": "󱛇",
-                "disconnected": "󰤯",
-                "disabled": "󰖪",
-            },
+            "format-wifi": "{essid} ({signalStrength}%) ",
+            "format-ethernet": "{ipaddr}/{cidr} ",
+            "tooltip-format": "{ifname} via {gwaddr} ",
+            "format-linked": "{ifname} (No IP) ",
+            "format-disconnected": "Disconnected ⚠",
             "format-alt": "{ifname}: {ipaddr}/{cidr}",
-            "tooltip-format": "{essid} ({signalStrength}%)\n{ifname} via {gwaddr}\n {bandwidthUpBytes}\t {bandwidthDownBytes}",
-            "on-click-right": "kitty nmtui"
+            "on-double-click": "kitty nmtui"
         },
         "pulseaudio": {
             "format": "{volume}% {icon} {format_source}",
@@ -204,7 +178,19 @@
                 "/sys/class/hwmon/hwmon7/temp1_input"
             ],
             "input-filename": "temp1_input"
-        },
+        }
+    },
+    {
+        "layer": "top",
+        "position": "bottom",
+        "height": 30,
+        "modules-left": [
+            "hyprland/workspaces"
+        ],
+        "modules-middle": [],
+        "modules-right": [
+            "custom/notifications"
+        ],
         "hyprland/workspaces": {
             "format": "{name}",
             "format-icons": {
@@ -218,6 +204,15 @@
                 "default": ""
             },
             "disable-scroll": true
-        }
+        },
+        "custom/notifications": {
+            "format": "{text} {icon}",
+            "tooltip-format": "{alt}",
+            "return-type": "json",
+            "exec": "dunstctl count history | xargs printf '{ \"text\": \" %1$d\", \"alt\": \"%1$d hidden notification(s)\" }'",
+            "on-click": "dunstctl history-pop",
+            "on-click-right": "dunstctl close-all ; dunstctl history-clear",
+            "restart-interval": 2
+        },
     }
 ]

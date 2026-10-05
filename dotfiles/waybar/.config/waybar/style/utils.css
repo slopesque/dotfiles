@@ -8,6 +8,12 @@ label:focus {
     background-color: #000000;
 }
 
+@keyframes hover {
+    to {
+        background-color: @surface0;
+    }
+}
+
 @keyframes blink {
     to {
         background-color: #ffffff;
