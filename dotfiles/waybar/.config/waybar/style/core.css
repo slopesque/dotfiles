@@ -12,8 +12,8 @@
 }
 
 window#waybar {
-    background-color: @base;
-    border-bottom: 3px solid @crust;
+    background-color: @background;
+    border-bottom: 3px solid @border;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -21,15 +21,23 @@ window#waybar {
 label.module {
     padding: 0px 10px;
     color: @text;
-    border: 2px solid @mantle;
+    border: 2px solid @border;
     border-top: inherit;
     border-bottom: inherit;
 }
 
 label.module:hover {
-    border: 2px solid @mantle;
+    border: 2px solid @border;
+    border-bottom-width: 3px;
     animation-name: hover;
     animation-duration: 0.4s;
     animation-fill-mode: forwards;
     animation-direction: alternate;
+}
+
+button {
+    color: @text;
+    border: 1px solid @border;
+    border-top: inherit;
+    border-bottom: inherit;
 }

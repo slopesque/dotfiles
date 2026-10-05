@@ -124,8 +124,8 @@
             "menu-actions": {
                 "lock": "hyprlock",
                 "exit": "hyprctl dispatch hyprshutdown",
-                "shutdown": "sudo poweroff",
-                "reboot": "sudo reboot"
+                "shutdown": "loginctl poweroff",
+                "reboot": "loginctl reboot"
             }
         },
         "custom/updates": {
@@ -196,14 +196,7 @@
                 "",
                 ""
             ],
-            "hwmon-path": [
-                "/sys/class/hwmon/hwmon2/temp1_input",
-                "/sys/class/hwmon/hwmon2/temp2_input",
-                "/sys/class/hwmon/hwmon3/temp3_input",
-                "/sys/class/hwmon/hwmon3/temp1_input",
-                "/sys/class/hwmon/hwmon7/temp1_input"
-            ],
-            "input-filename": "temp1_input"
+            "on-click": "kitty btop"
         },
         "hyprland/workspaces": {
             "format": "{name}",

@@ -115,11 +115,22 @@
 
 #workspaces button.active {
     /* background-color: @lavender; */
-    opacity: 0.9;
+    opacity: 1;
+    border: 2px solid @border;
+    border-bottom-width: 3px;
+    animation-name: hover-workspace-active;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
 }
 
 #workspaces button.urgent {
-    /* background-color: @red; */
+    border: 2px solid @border;
+    border-bottom-width: 3px;
+    animation-name: hover-workspace-urgent;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
 }
 
 #custom-locker, #custom-focus-mode {

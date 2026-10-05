@@ -4,6 +4,9 @@
  |                  |
  * ---------------- */
 
+@define-color background rgba(48, 52, 70, 0.65);  /* @base with opacity */
+@define-color border rgba(41, 44, 61, 0.8);  /* @mantle with opacity */
+
 label:focus {
     background-color: #000000;
 }
@@ -11,6 +14,18 @@ label:focus {
 @keyframes hover {
     to {
         background-color: @surface0;
+    }
+}
+
+@keyframes hover-workspace-active {
+    to {
+        background-color: @surface1;
+    }
+}
+
+@keyframes hover-workspace-urgent {
+    to {
+        background-color: @red;
     }
 }
 
