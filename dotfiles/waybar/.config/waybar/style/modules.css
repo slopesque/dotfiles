@@ -4,8 +4,10 @@
  |                  |
  * ---------------- */
 
+/* without padding blink is a bit narrow on the right ;-; */
 #battery {
     /* background-color: @lavender; */
+    padding-right: 1rem;  
 }
 
 #battery.charging,
@@ -15,8 +17,10 @@
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    /* background-color: @red; */
-    color: #ffffff;
+    /* color: #ffffff; */
+    background-color: @red;
+    border: 2px solid @border;
+    border-bottom-width: 3px;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);

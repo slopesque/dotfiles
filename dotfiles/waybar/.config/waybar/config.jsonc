@@ -63,7 +63,10 @@
                 "",
                 "",
                 ""
-            ]
+            ],
+            "events": {
+                "on-discharging-critical": "notify-send 'Low battery' 'Quick, find a charger!' --app-name 'waybar' --urgency=critical",
+            }
         },
         "battery#bat2": {
             "bat": "BAT2"
