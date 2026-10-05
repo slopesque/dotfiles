@@ -70,6 +70,7 @@
 
 #language {
     /* background: @sapphire; */
+    min-width: 11px;
 }
 
 #memory {
