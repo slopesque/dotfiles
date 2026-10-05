@@ -18,26 +18,26 @@ window#waybar {
     transition-duration: .5s;
 }
 
+button {
+    padding: 0;
+}
+
 label.module {
     padding: 0px 10px;
+}
+
+button, label.module {
     color: @text;
     border: 2px solid @border;
     border-top: inherit;
     border-bottom: inherit;
 }
 
-label.module:hover {
+ button:hover, label.module:hover {
     border: 2px solid @border;
     border-bottom-width: 3px;
     animation-name: hover;
     animation-duration: 0.4s;
     animation-fill-mode: forwards;
     animation-direction: alternate;
-}
-
-button {
-    color: @text;
-    border: 1px solid @border;
-    border-top: inherit;
-    border-bottom: inherit;
 }
