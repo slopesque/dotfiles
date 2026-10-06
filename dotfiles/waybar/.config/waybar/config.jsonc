@@ -9,6 +9,7 @@
             "pulseaudio",
             "network",
             "bluetooth",
+            "mpris",
             "custom/virtual-keyboard",
             "hyprland/language",
             "custom/locker"
@@ -24,17 +25,19 @@
             "battery"
         ],
         "mpris": {
-            "player": "spotify",
-            "interval": 1,
-            "format": "{player_icon} {dynamic}",
-            "format-paused": "{status_icon} <i>{dynamic}</i>",
+            "format": "{player_icon}",
+            "format-paused": "{status_icon}",
+            "tooltip-format": "Listening on {player} ~\nNow on: {title} by {artist}\n{position}/{length}",
             "player-icons": {
                 "default": "▶",
                 "mpv": "🎵"
             },
             "status-icons": {
-                "paused": "⏸"
+                "paused": "⏸",
+                "stopped": "󰝛",
             },
+            "truncate-hours": true,
+            "interval": 1
         },
         "backlight": {
             "format": "{percent}% {icon}",

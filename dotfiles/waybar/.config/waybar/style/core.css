@@ -26,7 +26,14 @@ label.module {
     padding: 0px 10px;
 }
 
-button, label.module {
+/* Required to get all custom modules at once */
+/* See commit cd831ec0eeebbfc8d02badb012469a9db10e8efc */
+/* PR: https://github.com/Alexays/Waybar/pull/5340 */
+ .text-button {
+    padding: 0px 10px;
+ }
+
+button, label.module, .text-button {
     color: @text;
     border: 2px solid @border;
     border-top: inherit;
