@@ -33,18 +33,18 @@ label.module {
     padding: 0px 10px;
  }
 
+/* Using steps() instead of linear as a timing function to limit cpu usage */
 button, label.module, .text-button {
     color: @text;
     border: 2px solid @border;
     border-top: inherit;
     border-bottom: inherit;
+    transition: background-color 0.4s, opacity 1s;
+    transition-timing-function: steps(10);
 }
 
- button:hover, label.module:hover {
+button:hover, label.module:hover {
     border: 2px solid @border;
     border-bottom-width: 3px;
-    animation-name: hover;
-    animation-duration: 0.4s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
+    background-color: @surface0;
 }

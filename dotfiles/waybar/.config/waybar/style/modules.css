@@ -15,7 +15,6 @@
     /* background-color: @green; */
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     /* color: #ffffff; */
     background-color: @red;
@@ -112,31 +111,23 @@
 #workspaces button {
     /* background-color: @rosewater; */
     opacity: 0.65;
+    border: 2px solid @border;
+    border-bottom-width: 3px;
+    transition: background-color 0.4s, opacity 1s;
+    transition-timing-function: steps(10);
 }
 
-#workspaces button:hover {
+#workspaces button:not(.active):hover {
     opacity: 0.8;
-    transition: opacity 1s;
 }
 
 #workspaces button.active {
-    /* background-color: @lavender; */
+    background-color: @surface1;
     opacity: 1;
-    border: 2px solid @border;
-    border-bottom-width: 3px;
-    animation-name: hover-workspace-active;
-    animation-duration: 0.4s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
 }
 
 #workspaces button.urgent {
-    border: 2px solid @border;
-    border-bottom-width: 3px;
-    animation-name: hover-workspace-urgent;
-    animation-duration: 0.4s;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
+    background-color: @red;
 }
 
 #custom-locker, #custom-focus-mode {
