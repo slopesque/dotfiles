@@ -6,17 +6,20 @@
 
 /* without padding blink is a bit narrow on the right ;-; */
 #battery {
-    /* background-color: @lavender; */
     padding-right: 1rem;  
 }
 
-#battery.charging,
 #battery.plugged {
-    /* background-color: @green; */
+    background-color: @enabled;
+    border: 2px solid @border;
+}
+
+#battery.charging {
+    background-color: @charging;
+    border: 2px solid @border;
 }
 
 #battery.critical:not(.charging) {
-    /* color: #ffffff; */
     background-color: @red;
     border: 2px solid @border;
     border-bottom-width: 3px;
@@ -27,81 +30,22 @@
     animation-direction: alternate;
 }
 
-#backlight {
-    /* background-color: @rosewater */;
-}
-
-#bluetooth {
-    /* background-color: @mauve; */
-}
-
-#bluetooth.disabled,
-#bluetooth.off {
-    /* background-color: @surface1; */
-}
-
-#bluetooth.on {
-    /* background-color: @maroon; */
-}
-
-#bluetooth.discovering,
-#bluetooth.discoverable,
-#bluetooth.pairable {
-    /* background-color: @sapphire; */
-    /* color: @base; */
-}
-
 #bluetooth.connected {
-    /* background-color: @teal; */
-}
-
-#clock {
-    /* background-color: @overlay2; */
-}
-
-#cpu {
-    /* background-color: @pink; */
-}
-
-#disk {
-    /* background-color: @mauve; */
+    background-color: @enabled;
+    border: 2px solid @border;
 }
 
 #language {
-    /* background: @sapphire; */
     min-width: 11px;
 }
 
-#memory {
-    /* background-color: @blue; */
-}
-
-#network {
-    /* background-color: @sky; */
-}
-
-#network.disconnected {
-    /* background-color: @maroon; */
-}
-
-#pulseaudio {
-    /* background-color: @yellow; */
-}
-
-#pulseaudio:hover {
-    /* background-color: #a37800; */
-}
-
-#pulseaudio.muted {
-    /* background-color: #90b1b1; */
-}
-
-#temperature {
-    /* background-color: @peach; */
+#network.ethernet, #network.wifi {
+    background-color: @enabled;
+    border: 2px solid @border;
 }
 
 #temperature.critical {
-    /* background-color: @red; */
+    background-color: @red;
 }
 
 #window {
@@ -128,77 +72,4 @@
 
 #workspaces button.urgent {
     background-color: @red;
-}
-
-#custom-locker, #custom-focus-mode {
-    /* background-color: @crust; */
-}
-
-#custom-locker.purple, #custom-focus-mode.unknown {
-    /* background-color: @mauve; */
-}
-
-#custom-focus-mode.inactive {
-    /* background-color: @lavender; */
-}
-
-#custom-focus-mode.active {
-    /* background-color: @yellow; */
-}
-
-#custom-locker.red {
-    /* background-color: @red; */
-}
-
-#custom-locker.green {
-    /* background-color: @green; */
-}
-
-#custom-notifications {
-    /* background-color: @yellow; */
-}
-
-#custom-power {
-    /* background-color: @crust; */
-}
-
-#custom-power:hover {
-    /* color: #ffffff; */
-}
-
-#custom-updates {
-    /* background-color: @lavender; */
-}
-
-#custom-updates.purple {
-    /* background-color: @mauve; */
-}
-
-#custom-updates.red {
-    /* background-color: @red; */
-}
-
-#custom-updates.yellow {
-    /* background-color: @yellow; */
-}
-
-#custom-updates.green {
-    /* background-color: @green; */
-}
-
-#custom-virtual-keyboard {
-    /* background-color: @lavender; */
-}
-
-#custom-virtual-keyboard.undefined {
-    /* background-color: @maroon; */
-}
-
-#custom-virtual-keyboard.inactive {
-    /* background-color: @lavender; */
-}
-
-#custom-virtual-keyboard.active {
-    /* background-color: @green; */
-    /* border: white; */
 }
