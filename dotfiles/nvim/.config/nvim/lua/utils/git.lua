@@ -20,6 +20,25 @@ end
 
 -- Interface
 
+-- Return the repository root path based on a file in the repository.
+--
+-- Params:
+--   * path (string) - A path
+--
+-- Returns:
+--   string|nil - The path to the closest folder with a .git child folder. If
+--                this folder is not found or path is nil, nil is returned
+--                instead.
+function git.get_repository_root(path)
+    if path == nil then
+        return nil
+    end
+
+    path = vim.fs.dirname(path)
+
+    return vim.fs.root(path, ".git")
+end
+
 function git.add(paths)
     local command = { "git", "add", unpack(paths) }
 

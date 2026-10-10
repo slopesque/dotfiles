@@ -172,3 +172,21 @@ vim.keymap.set(
     "zG",
     { desc = "Add word as a good spell in memory" }
 )
+
+--
+-- Applications
+--
+
+vim.keymap.set(
+    "n",
+    "<leader>af",
+    "<cmd>Fastfetch<CR>",
+    { desc = "Run Fastfetch" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>ao",
+    "<cmd>Onefetch<CR>",
+    { desc = "Run Onefetch" }
+)

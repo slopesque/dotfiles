@@ -1,9 +1,20 @@
+local exec = require("utils.exec")
 local git = require("utils.git")
 local tables = require("utils.tables")
 
 --
 -- Utilities
 --
+
+local function get_current_file()
+    local current_path = vim.api.nvim_buf_get_name(0)
+
+    if current_path == nil or current_path == "" then
+        return nil
+    end
+
+    return current_path
+end
 
 local function validate_path(path)
     local path_exists = (
@@ -20,9 +31,9 @@ end
 
 local function perform(paths, callback)
     if #paths < 1 then
-        local current_path = vim.api.nvim_buf_get_name(0)
+        local current_path = get_current_file()
 
-        if current_path == nil or current_path == "" then
+        if current_path == nil then
             vim.notify(
                 "Current buffer doesn't refer to a file !",
                 vim.log.levels.ERROR
@@ -158,5 +169,43 @@ vim.api.nvim_create_user_command(
         nargs = "*",
         complete = "file",
         desc = "Unstage files from Git stage"
+    }
+)
+
+--
+-- Applications
+--
+
+vim.api.nvim_create_user_command(
+    "Fastfetch",
+    function(opts)
+        local fastfetch = "fastfetch"
+        local cmd = { fastfetch, "--logo", "auto", "--pipe", "false" }
+        exec.display_command_popup(cmd)
+    end,
+    {
+        nargs = 0;
+        desc = "Run fastfetch",
+    }
+)
+
+vim.api.nvim_create_user_command(
+    "Onefetch",
+    function(opts)
+        local onefetch = "onefetch"
+        local path = opts.fargs[1]
+
+        if path == nil then
+            path = get_current_file()
+            path = git.get_repository_root(path)
+        end
+
+        local cmd = { onefetch, "--nerd-fonts", path }
+        exec.display_command_popup(cmd)
+    end,
+    {
+        nargs = "*";
+        complete = "dir";
+        desc = "Run onefetch",
     }
 )
