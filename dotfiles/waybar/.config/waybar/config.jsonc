@@ -6,26 +6,39 @@
         "height": 30,
         "modules-left": [
             "clock",
+            "pulseaudio",
             "network",
             "bluetooth",
-            "pulseaudio",
-            "hyprland/language"
+            "mpris",
+            "custom/virtual-keyboard",
+            "hyprland/language",
+            "custom/locker"
         ],
-        "modules-center": [
-            "hyprland/window"
-        ],
+        "modules-center": ["hyprland/workspaces"],
         "modules-right": [
             "custom/updates",
+            "custom/notifications",
             "cpu",
             "memory",
             "temperature",
             "backlight",
-            "battery",
-            "custom/virtual-keyboard",
-            "custom/locker",
-            "custom/focus-mode",
-            "custom/power"
+            "battery"
         ],
+        "mpris": {
+            "format": "{player_icon}",
+            "format-paused": "{status_icon}",
+            "tooltip-format": "Listening on {player} ~\nNow on: {title} by {artist}\n{position}/{length}",
+            "player-icons": {
+                "default": "▶",
+                "mpv": "🎵"
+            },
+            "status-icons": {
+                "paused": "⏸",
+                "stopped": "󰝛",
+            },
+            "truncate-hours": true,
+            "interval": 1
+        },
         "backlight": {
             "format": "{percent}% {icon}",
             "format-icons": [
@@ -55,19 +68,27 @@
                 "",
                 "",
                 ""
-            ]
+            ],
+            "events": {
+                "on-discharging-critical": "notify-send 'Low battery' 'Quick, find a charger!' --app-name 'waybar' --urgency=critical",
+            }
         },
         "battery#bat2": {
             "bat": "BAT2"
         },
         "bluetooth": {
-            "format": " {status}",
-            "format-connected": " {device_alias}",
-            "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+            "format": "",
+            "format-connected": "󰂱",
+            "format-connected-battery": "󰂱 {device_battery_percentage}%",
+            "format-on": "",
+            "format-off": "",
+            "format-disabled": "󰂲",
+            "format-no-controller": "󰂲",
             "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
             "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
             "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+            "on-click": "kitty bluetoothctl",
         },
         "clock": {
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -94,6 +115,15 @@
             "restart-interval": 1,
             "on-click": "~/.config/waybar/scripts/switch-locker-state.sh"
         },
+        "custom/notifications": {
+            "format": "{text} {icon}",
+            "tooltip-format": "{alt}",
+            "return-type": "json",
+            "exec": "dunstctl count history | xargs printf '{ \"text\": \"%1$d \", \"alt\": \"%1$d hidden notification(s)\" }'",
+            "on-click": "dunstctl history-pop",
+            "on-click-right": "dunstctl close-all ; dunstctl history-clear",
+            "restart-interval": 2
+        },
         "custom/power": {
             "format": " ⏻ ",
             "tooltip": false,
@@ -102,8 +132,8 @@
             "menu-actions": {
                 "lock": "hyprlock",
                 "exit": "hyprctl dispatch hyprshutdown",
-                "shutdown": "sudo poweroff",
-                "reboot": "sudo reboot"
+                "shutdown": "loginctl poweroff",
+                "reboot": "loginctl reboot"
             }
         },
         "custom/updates": {
@@ -131,13 +161,17 @@
             "on-click": "kitty btop"
         },
         "network": {
-            "format-wifi": "{essid} ({signalStrength}%) ",
-            "format-ethernet": "{ipaddr}/{cidr} ",
-            "tooltip-format": "{ifname} via {gwaddr} ",
-            "format-linked": "{ifname} (No IP) ",
-            "format-disconnected": "Disconnected ⚠",
+            "format": "{icon}",
+            "format-icons": {
+                "wifi": "󰖩",
+                "ethernet": "󰈀",
+                "linked": "󱛇",
+                "disconnected": "󰤯",
+                "disabled": "󰖪",
+            },
             "format-alt": "{ifname}: {ipaddr}/{cidr}",
-            "on-double-click": "kitty nmtui"
+            "tooltip-format": "{essid} ({signalStrength}%)\n{ifname} via {gwaddr}\n {bandwidthUpBytes}\t {bandwidthDownBytes}",
+            "on-click-right": "kitty nmtui"
         },
         "pulseaudio": {
             "format": "{volume}% {icon} {format_source}",
@@ -169,20 +203,9 @@
                 "",
                 "",
                 ""
-            ]
-        }
-    },
-    {
-        "layer": "top",
-        "position": "bottom",
-        "height": 30,
-        "modules-left": [
-            "hyprland/workspaces"
-        ],
-        "modules-middle": [],
-        "modules-right": [
-            "custom/notifications"
-        ],
+            ],
+            "on-click": "kitty btop"
+        },
         "hyprland/workspaces": {
             "format": "{name}",
             "format-icons": {
@@ -196,15 +219,6 @@
                 "default": ""
             },
             "disable-scroll": true
-        },
-        "custom/notifications": {
-            "format": "{text} {icon}",
-            "tooltip-format": "{alt}",
-            "return-type": "json",
-            "exec": "dunstctl count history | xargs printf '{ \"text\": \" %1$d\", \"alt\": \"%1$d hidden notification(s)\" }'",
-            "on-click": "dunstctl history-pop",
-            "on-click-right": "dunstctl close-all ; dunstctl history-clear",
-            "restart-interval": 2
-        },
+        }
     }
 ]
