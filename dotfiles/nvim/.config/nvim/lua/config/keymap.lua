@@ -174,6 +174,35 @@ vim.keymap.set(
 )
 
 --
+-- Fuzzy-finder
+--
+
+local picker_key = "<Space><Space>"
+
+-- Bind a picker to the current Neovim keymap.
+--
+-- Any picker can be activated using the <Space><Space> key combination, along
+-- with the dedicated key for the picker.
+--
+-- @param key string The key combination associated with the picker
+-- @param picker string The picker to run
+-- @param desc string An elegant description for the new picker keymap
+local function bind_picker(key, picker, desc)
+    vim.keymap.set(
+        "n",
+        picker_key .. key,
+        "<cmd>Fzf" .. picker .. "<CR>",
+        { desc = desc }
+    )
+end
+
+
+bind_picker("b", "Buffers", "Open Buffers Fuzzy-Finder")
+bind_picker("f", "Files", "Open Files Fuzzy-Finder")
+bind_picker("g", "Grep", "Open Grep Pattern Fuzzy-Finder")
+bind_picker("h", "Help", "Open Help Pages Fuzzy-Finder")
+
+--
 -- Applications
 --
 
