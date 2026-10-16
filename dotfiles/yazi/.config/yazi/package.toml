@@ -1,0 +1,12 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "9166202"
+hash = "87472b05a8c420100f6a2b9cde1e7746"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:vcs-files"
+rev = "9166202"
+hash = "4f2a05edce73aef2bceb2ee2c134c8f2"
+
+[flavor]
+deps = []

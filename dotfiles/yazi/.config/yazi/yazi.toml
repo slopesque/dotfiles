@@ -1,0 +1,9 @@
+[opener]
+xournalpp = [
+    { run = "xournalpp %s", orphan = true, for = "unix" }
+]
+
+[open]
+prepend_rules = [
+    { url = "*.xopp", use = "xournalpp" }
+]

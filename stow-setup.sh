@@ -14,7 +14,8 @@ stow --target ~ \
     nushell \
     nvim \
     vimrc \
-    waybar
+    waybar \
+    yazi
 
 cd ../themes
 

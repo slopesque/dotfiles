@@ -1,0 +1,20 @@
+[mgr]
+prepend_keymap = [
+    {
+        # Based-on: https://yazi-rs.github.io/docs/tips/#selected-files-to-clipboard
+        on   = "y",
+        run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ],
+        desc = "Yank and add files to clipboard",
+        for  = "unix",
+    },
+    {
+        on   = [ "g", "g", "c" ],
+        run  = "plugin vcs-files",
+        desc = "Show Git file changes",
+    },
+    {
+        on   = [ "c", "m" ],
+        run  = "plugin chmod",
+        desc = "Chmod on selected files",
+    },
+]
