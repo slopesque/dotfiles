@@ -359,6 +359,42 @@ vim.api.nvim_create_user_command(
 --
 
 vim.api.nvim_create_user_command(
+    "Yazi",
+    function(opts)
+        local yazi = "yazi"
+        local path = opts.fargs[1]
+
+        if path == "" then
+            path = nil
+        end
+
+        if path == nil then
+            path = git.get_repository_root()
+        end
+
+        if path == nil then
+            path = vim.fn.getcwd()
+        end
+
+        local cmd = { yazi, "--chooser-file=/dev/stdout", path }
+
+        exec.display_interactive_window(
+            cmd,
+            {
+                callback = open_as_file,
+                cwd = path,
+                read_stdout = true,
+            }
+        )
+    end,
+    {
+        nargs = "*",
+        complete = "dir",
+        desc = "Run Yazi file manager",
+    }
+)
+
+vim.api.nvim_create_user_command(
     "Fastfetch",
     function(opts)
         local fastfetch = "fastfetch"

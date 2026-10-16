@@ -177,7 +177,7 @@ vim.keymap.set(
 -- Fuzzy-finder
 --
 
-local picker_key = "<Space><Space>"
+local picker_key = "<Space>z"
 
 -- Bind a picker to the current Neovim keymap.
 --
@@ -205,6 +205,13 @@ bind_picker("h", "Help", "Open Help Pages Fuzzy-Finder")
 --
 -- Applications
 --
+
+vim.keymap.set(
+    "n",
+    "<leader>f",
+    "<cmd>Yazi<CR>",
+    { desc = "Run Yazi" }
+)
 
 vim.keymap.set(
     "n",
