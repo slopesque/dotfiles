@@ -56,6 +56,19 @@ vim.keymap.set(
 )
 
 --
+-- Format
+--
+
+vim.keymap.set(
+    "n",
+    "<leader>lf",
+    "<cmd>Format<CR>",
+    {
+        desc = "Format buffer"
+    }
+)
+
+--
 -- Git
 --
 
@@ -195,7 +208,6 @@ local function bind_picker(key, picker, desc)
         { desc = desc }
     )
 end
-
 
 bind_picker("b", "Buffers", "Open Buffers Fuzzy-Finder")
 bind_picker("f", "Files", "Open Files Fuzzy-Finder")

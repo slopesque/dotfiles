@@ -1,16 +1,7 @@
 local exec = {}
 
+local colors = require("utils.colors")
 local windows = require("utils.windows")
-
---
--- Inner utilities
---
-
--- Shortcut to color magic values.
-local COLORS = {
-    RED = "\27[31m",
-    RESET = "\27[0m",
-}
 
 -- Return a visible text-only view of the string
 --
@@ -68,9 +59,9 @@ function exec.display_command_popup(cmd, opts)
 
                     if out.code != 0 then
                         error = executable .. " exited with code " .. out.code
-                        output = (
-                            COLORS.RED .. error .. "\n" .. out.stderr
-                            .. COLORS.RESET
+                        output = colors.wrap_in(
+                            error .. "\n" .. out.stderr,
+                            colors.RED
                         )
                         vim.notify(error, vim.log.levels.ERROR)
                     end

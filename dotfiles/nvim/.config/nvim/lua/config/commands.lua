@@ -1,5 +1,6 @@
 local exec = require("utils.exec")
 local files_manager = require("apps.files_manager")
+local format = require("apps.format")
 local fs = require("utils.fs")
 local fzf = require("apps.fzf")
 local git = require("apps.git")
@@ -70,6 +71,21 @@ vim.api.nvim_create_user_command(
     {
         nargs = 0,
         desc = "Open a new terminal window"
+    }
+)
+
+--
+-- Format buffers
+--
+
+vim.api.nvim_create_user_command(
+    "Format",
+    function()
+        format.run()
+    end,
+    {
+        nargs = 0,
+        desc = "Format the current buffer"
     }
 )
 

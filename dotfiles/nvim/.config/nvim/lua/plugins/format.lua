@@ -23,7 +23,7 @@ local configuration = {
         c = { "clang-format" },
         cpp = { "clang-format" },
         lua = { "stylua" },
-        markdown = {},
+        markdown = { "mdformat" },
         nix = { "nix", "alejandra", "nixfmt" },
         python = { "ruff" },
         rust = { "rustfmt" },
@@ -49,7 +49,7 @@ return {
         post_config = function()
             vim.keymap.set(
                 "n",
-                "<leader>lf",
+                "<leader>llf",
                 function()
                     require("conform").format(
                         {
