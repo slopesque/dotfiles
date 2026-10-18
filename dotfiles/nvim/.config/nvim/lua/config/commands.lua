@@ -1,5 +1,8 @@
 local exec = require("utils.exec")
-local git = require("utils.git")
+local files_manager = require("apps.files_manager")
+local fs = require("utils.fs")
+local fzf = require("apps.fzf")
+local git = require("apps.git")
 local tables = require("utils.tables")
 
 --
@@ -176,53 +179,6 @@ vim.api.nvim_create_user_command(
 -- Fuzzy-finder
 --
 
-local function open_as_file(file)
-    local escaped_file = vim.fn.fnameescape(file)
-    local cmd = string.format(":e %s", escaped_file)
-    vim.cmd(cmd)
-end
-
-local function get_fzf_previewer(extra_args)
-    local previewer = "cat"
-
-    if vim.fn.executable("bat") == 1 then
-        previewer = string.format(
-            '"bat --force-colorization --style=numbers %s "',
-            extra_args and table.concat(extra_args, " ") or "{}"
-        )
-    end
-
-    return previewer
-end
-
-local function fuzzy_finder(opts)
-    opts = opts or {}
-
-    local args = opts.args or {}
-    local callback = opts.callback or open_as_file
-    local cwd = opts.cwd or nil
-    local fzf = opts.fzf or "fzf"
-    local pipe_in = opts.pipe_in or {}
-
-    local cmd = pipe_in
-
-    if #pipe_in > 0 then
-        table.insert(cmd, "|")
-    end
-
-    table.insert(cmd, fzf)
-    cmd = vim.list_extend(cmd, args)
-
-    exec.display_interactive_window(
-        cmd,
-        {
-            callback = callback,
-            cwd = cwd,
-            read_stdout = true,
-        }
-    )
-end
-
 vim.api.nvim_create_user_command(
     "FzfFiles",
     function(opts)
@@ -230,12 +186,12 @@ vim.api.nvim_create_user_command(
 
         local args = {
             "--preview",
-            get_fzf_previewer(),
+            fzf.previewer(),
             "--preview-window",
             "right:55%",
         }
 
-        fuzzy_finder(
+        fzf.run(
             {
                 args = args,
                 cwd = path,
@@ -269,7 +225,7 @@ vim.api.nvim_create_user_command(
 
         local args = {
             "--preview",
-            get_fzf_previewer(),
+            fzf.previewer(),
             "--preview-window",
             "right:55%",
         }
@@ -280,7 +236,7 @@ vim.api.nvim_create_user_command(
             table.concat(buffer_names, "\\\\n"),
         }
 
-        fuzzy_finder(
+        fzf.run(
             {
                 args = args,
                 pipe_in = pipe_in,
@@ -331,18 +287,18 @@ vim.api.nvim_create_user_command(
             "--delimiter",
             ":",
             "--preview",
-            get_fzf_previewer(preview_args),
+            fzf.previewer(preview_args),
             "--preview-window",
             "right:55%",
         }
 
-        fuzzy_finder(
+        fzf.run(
             {
                 args = args,
                 pipe_in = pipe_in,
                 callback = function(choice)
                     local file, line = string.match(choice, "^(.*):(%d+):.*$")
-                    open_as_file(file)
+                    fs.open(file)
                     vim.api.nvim_win_set_cursor(0, { tonumber(line), 0 })
                 end,
             }
@@ -359,9 +315,8 @@ vim.api.nvim_create_user_command(
 --
 
 vim.api.nvim_create_user_command(
-    "Yazi",
+    "FilesManager",
     function(opts)
-        local yazi = "yazi"
         local path = opts.fargs[1]
 
         if path == "" then
@@ -376,14 +331,9 @@ vim.api.nvim_create_user_command(
             path = vim.fn.getcwd()
         end
 
-        local cmd = { yazi, "--chooser-file=/dev/stdout", path }
-
-        exec.display_interactive_window(
-            cmd,
+        files_manager.run(
             {
-                callback = open_as_file,
-                cwd = path,
-                read_stdout = true,
+                path = path,
             }
         )
     end,

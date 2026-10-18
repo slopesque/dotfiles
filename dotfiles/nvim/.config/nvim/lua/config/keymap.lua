@@ -209,8 +209,8 @@ bind_picker("h", "Help", "Open Help Pages Fuzzy-Finder")
 vim.keymap.set(
     "n",
     "<leader>f",
-    "<cmd>Yazi<CR>",
-    { desc = "Run Yazi" }
+    "<cmd>FilesManager<CR>",
+    { desc = "Run the file manager" }
 )
 
 vim.keymap.set(

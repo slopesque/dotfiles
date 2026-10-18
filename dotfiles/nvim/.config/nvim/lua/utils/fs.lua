@@ -60,4 +60,17 @@ function fs.require_from_path(path)
     return require(module)
 end
 
+-- Open the element at path into the current Neovim window.
+--
+-- The path is opened in edit mode by default.
+--
+-- Equivalent to running ":e {file}" in the Neovim command line.
+--
+-- @param file string a path
+function fs.open(file)
+    local escaped_file = vim.fn.fnameescape(file)
+    local cmd = string.format(":e %s", escaped_file)
+    vim.cmd(cmd)
+end
+
 return fs
