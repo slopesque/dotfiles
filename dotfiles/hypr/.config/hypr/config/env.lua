@@ -29,9 +29,10 @@ env.vars = {
     theme = "Adwaita-dark",
     cursor_size = "24",
     cursor_theme = "miku-cursor-linux",
-    FCITX_ON = false,
     HYPRPM_ON = false,
     LAPTOP_MODE = false,
+    OPENRC_LEVEL = "default",
+    OPENRC_ON = false,
 }
 
 require("config.override_env")(env)

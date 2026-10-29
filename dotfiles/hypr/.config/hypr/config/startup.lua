@@ -17,13 +17,13 @@ local function if_true(condition, command)
 end
 
 local commands = {
-    "dunst",
     "hyprctl setcursor " .. env.vars.cursor_theme .. " " .. env.vars.cursor_size,
-    "hypridle",
-    "hyprpaper",
-    "waybar",
-    if_true(env.vars.FCITX_ON, "fcitx5 -d --replace"),
     if_true(env.vars.HYPRPM_ON, "hyprpm reload"),
+    if_true(env.vars.OPENRC_ON, "openrc --user " .. env.vars.OPENRC_LEVEL),
+    if_true(
+        env.vars.OPENRC_ON,
+        "dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY PATH"
+    ),
     delay(
         1,
         THEME_SWITCH_HANDLER .. " " .. THEME_SWITCH_INTERVAL
@@ -39,4 +39,11 @@ local function startup()
     end
 end
 
+local function shutdown()
+    if env.vars.OPENRC_ON then
+        hl.exec_cmd("openrc --user default")
+    end
+end
+
 hl.on("hyprland.start", startup)
+hl.on("hyprland.shutdown", shutdown)

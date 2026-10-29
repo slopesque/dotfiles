@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+description="A blazing fast wayland wallpaper utility"
+
+supervisor="supervise-daemon"
+
+command="/usr/bin/hyprpaper"
+
+output_log="${XDG_STATE_HOME:-$HOME/.local/state}/hyprpaper.log"
+error_log="${XDG_STATE_HOME:-$HOME/.local/state}/hyprpaper.log"

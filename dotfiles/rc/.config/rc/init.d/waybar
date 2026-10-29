@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+description="Highly customizable Wayland bar for Sway and Wlroots based compositors"
+
+supervisor="supervise-daemon"
+
+command="/usr/bin/waybar"
+
+output_log="${XDG_STATE_HOME:-$HOME/.local/state}/waybar.log"
+error_log="${XDG_STATE_HOME:-$HOME/.local/state}/waybar.log"
+
+depend() {
+	need dbus pipewire pipewire-pulse
+}

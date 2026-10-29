@@ -1,0 +1,3 @@
+# Do not store OpenRC runlevel bindings (it seems openrc references services
+# using system root, not based on init.d). Best not to store it
+runlevels/

@@ -10,4 +10,3 @@ if env.vars.LAPTOP_MODE then
         }
     )
 end
-

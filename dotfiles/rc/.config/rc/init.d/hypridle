@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+description="Hyprland's idle daemon"
+
+supervisor="supervise-daemon"
+
+command="/usr/bin/hypridle"
+
+output_log="${XDG_STATE_HOME:-$HOME/.local/state}/hypridle.log"
+error_log="${XDG_STATE_HOME:-$HOME/.local/state}/hypridle.log"

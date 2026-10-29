@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+description="A generic input method framework"
+
+supervisor="supervise-daemon"
+
+command="/usr/bin/fcitx5"
+
+respawn_delay=2
+respawn_max=5
+respawn_period=30
+
+output_log="${XDG_STATE_HOME:-$HOME/.local/state}/fcitx5.log"
+error_log="${XDG_STATE_HOME:-$HOME/.local/state}/fcitx5.log"
+
+healthcheck_timer=30
+
+healthcheck() {
+    pgrep -u "$USER" -x fcitx5 >/dev/null;
+}
