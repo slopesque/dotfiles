@@ -29,7 +29,6 @@
             alejandra
             bash-language-server
             nixd
-            emmylua-ls
           ];
         };
       };
