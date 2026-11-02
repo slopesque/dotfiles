@@ -41,7 +41,7 @@ local formatters = {
     },
     ["tex-fmt"] = {
         command = "tex-fmt",
-        args = { "--stdin" }
+        args = { "--stdin" },
     },
 }
 
@@ -205,6 +205,22 @@ end
 
 format.formatters = formatters
 format.formatters_by_ft = formatters_by_ft
+
+vim.g.autoformat_enabled = false
+
+function format.toggle_autoformat()
+    vim.g.autoformat_enabled = not vim.g.autoformat_enabled
+
+    local new_mode
+
+    if vim.g.autoformat_enabled then
+        new_mode = "enabled"
+    else
+        new_mode = "disabled"
+    end
+
+    vim.notify("Autoformat " .. new_mode, vim.log.levels.INFO)
+end
 
 -- Format the buffer.
 --

@@ -89,6 +89,15 @@ vim.api.nvim_create_user_command(
     }
 )
 
+vim.api.nvim_create_user_command(
+    "ToggleAutoFormat",
+    format.toggle_autoformat,
+    {
+        nargs = 0,
+        desc = "Toggle autoformat"
+    }
+)
+
 --
 -- Git commands
 --

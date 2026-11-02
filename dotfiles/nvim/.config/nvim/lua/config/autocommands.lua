@@ -1,9 +1,11 @@
+local format = require("apps.format")
 local strings = require("utils.strings")
 
 DUMP_MAX_LENGTH = 60
 
 -- Autocommand groups
 
+local on_save_group = vim.api.nvim_create_augroup("on_save", { clear = true })
 local yank_group = vim.api.nvim_create_augroup("yank", { clear = true })
 
 -- Autocommands
@@ -34,5 +36,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         )
 
         vim.notify(output)
+    end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+    desc = "Apply auto-formatting on file saving",
+    group = on_save_group,
+    callback = function(opts)
+        if not vim.g.autoformat_enabled then
+            return
+        end
+
+        local buf = opts.buf
+        local timeout = 5000
+
+        format.run(buf, { timeout = timeout })
     end,
 })

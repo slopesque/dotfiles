@@ -68,6 +68,14 @@ vim.keymap.set(
     }
 )
 
+vim.keymap.set(
+    "n",
+    "<leader>lF",
+    "<cmd>ToggleAutoFormat<CR>",
+    {
+        desc = "Toggle autoformat"
+    }
+)
 --
 -- Git
 --
