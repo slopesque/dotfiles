@@ -882,3 +882,9 @@ exts = [
 	{ name = "graphql", text = "", fg = "#ca9ee6" },
 	{ name = "cmake", text = "", fg = "#c6d0f5" },
 ]
+prepend_files = [
+    { name = "TODO", text = "󰄴", fg = "#a6d189" },
+]
+prepend_exts = [
+    { name = "xopp", text = "", fg = "#8caaee" },
+]

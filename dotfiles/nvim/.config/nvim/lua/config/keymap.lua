@@ -36,6 +36,27 @@ vim.keymap.set(
     { desc = "Move focus to the upper window" }
 )
 
+vim.keymap.set(
+    "n",
+    "<Tab>",
+    "<cmd>tabnext<CR>",
+    { desc = "Switch to next tab" }
+)
+
+vim.keymap.set(
+    "n",
+    "<S-Tab>",
+    "<cmd>tabnew<CR>",
+    { desc = "Create a new tab" }
+)
+
+vim.keymap.set(
+    "n",
+    "<C-Tab>",
+    "<cmd>tabclose<CR>",
+    { desc = "Close the current tab" }
+)
+
 --
 -- Utilitaries
 --
@@ -51,8 +72,15 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>t",
-    "<cmd>StartTerminal<CR>",
+    "<cmd>vs<CR><cmd>terminal<CR><cmd>startinsert<CR>",
     { desc = "Open a new terminal window" }
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>t<Tab>",
+    "<cmd>tabnew<CR><cmd>terminal<CR><cmd>startinsert<CR>",
+    { desc = "Open a new terminal window (in a new tab)" }
 )
 
 --
@@ -183,7 +211,7 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>sc",
-    "=z",
+    "z=",
     { desc = "Correct word spelling" }
 )
 

@@ -17,10 +17,7 @@ local config = {
         gaps_in = 5,
         gaps_out = 20,
 
-        ["col.active_border"] = {
-            colors = { "rgb(9283ac)",  "rgb(42774f)" },
-            angle = 45,
-        },
+        ["col.active_border"] = "rgba(292c3dcc)",
         ["col.inactive_border"] = "rgba(595959aa)",
 
         layout = "dwindle",
@@ -60,6 +57,30 @@ local config = {
     },
 }
 
+local curves = {
+    {
+        "default",
+        {
+            type = "bezier",
+            points = { { 0.05, 0.9 }, { 0.1, 1.05 } },
+        }
+    },
+    {
+        "openSnap",
+        {
+            type = "bezier",
+            points = { { 0.16, 1 }, { 0.3, 1.04 } },
+        }
+    },
+    {
+        "closeSmooth",
+        {
+            type = "bezier",
+            points = { { 0.4, 0 }, { 0.2, 1 } },
+        }
+    }
+}
+
 local animations = {
     {
         leaf = "workspaces",
@@ -72,11 +93,14 @@ local animations = {
     {
         leaf = "windowsIn",
         speed = 8,
+        style = "gnomed",
+        curve = "openSnap",
     },
     {
         leaf = "windowsOut",
         speed = 8,
-        style = "popin 75%",
+        style = "gnomed",
+        curve = "closeSmooth",
     },
     {
         leaf = "fade",
@@ -104,13 +128,10 @@ hl.layer_rule(
 
 hl.config(config)
 
-hl.curve(
-    "default",
-    {
-        type = "bezier",
-        points = { { 0.05, 0.9 }, { 0.1, 1.05 } },
-    }
-)
+for i = 1, #curves do
+    name, curve = table.unpack(curves[i])
+    hl.curve(name, curve)
+end
 
 for i = 1, #animations do
     animation = preprocess_animation(animations[i])

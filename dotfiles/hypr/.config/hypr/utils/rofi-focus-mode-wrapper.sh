@@ -34,5 +34,5 @@ if [ "$focus_mode_on" -eq 1 ]; then
         | rofi -dmenu -p "Focus Mode Active" \
         | xargs hyprctl dispatch exec
 else
-    rofi -show drun
+    rofi -show drun -terminal kitty
 fi

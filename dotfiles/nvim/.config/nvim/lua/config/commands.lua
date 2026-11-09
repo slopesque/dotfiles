@@ -61,19 +61,6 @@ end
 -- Shortcuts
 --
 
-vim.api.nvim_create_user_command(
-    "StartTerminal",
-    function(opts)
-        vim.cmd("vs")
-        vim.cmd("terminal")
-        vim.cmd("startinsert")
-    end,
-    {
-        nargs = 0,
-        desc = "Open a new terminal window"
-    }
-)
-
 --
 -- Format buffers
 --
