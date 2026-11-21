@@ -13,6 +13,7 @@ stow --target ~ \
     neofetch \
     nushell \
     nvim \
+    pi \
     vimrc \
     waybar \
     yazi

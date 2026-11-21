@@ -1,0 +1,7 @@
+# Local configuration
+agent/auth.json
+agent/models-store.json
+agent/settings.json
+
+# Cache
+agent/sessions/
