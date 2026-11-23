@@ -35,7 +35,7 @@
 
       homeModules = rec {
         default = dotfiles;
-        dotfiles = import ./modules/lib;
+        dotfiles = import ./modules/home-manager;
       };
     });
 }

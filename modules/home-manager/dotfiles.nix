@@ -7,6 +7,7 @@
   cfg = config.home.my-dotfiles;
 in {
   imports = [
+    ./agents.nix
     ./bashrc.nix
     ./dunst.nix
     ./fastfetch.nix
